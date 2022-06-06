@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/post', 'App\Http\Controllers\PostController@store')->name('upload_post');
 Route::get('/post', function () { return redirect('/test'); })->name('post');
 Route::get('/post/{id?}', 'App\Http\Controllers\PostController@index')->name('get_post');
-Route::get('/user/{name}', 'App\Http\Controllers\UserController@getUser')->middleware('auth')->name('get_user');
+## Route::get('/user/{name}', 'App\Http\Controllers\UserController@getUser')->middleware('auth')->name('get_user');
 ## Redireccionado de rutas ==> controladores

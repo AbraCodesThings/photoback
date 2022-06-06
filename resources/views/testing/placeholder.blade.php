@@ -6,8 +6,9 @@
   </head>
   <body>
     <p>
-      <h1>ESTO ES UNA API.</h1>
-      <span>LÁRGATE.</span>
+      <h1>Wohohoooooo.</h1>
+      @yield('test_yield')
     </p>
+      @yield('test_panel')
   </body>
 </html>
