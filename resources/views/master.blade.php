@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    @yield('headers')
-  </head>
+
+  @include('headers')
+
   <body>
-    @yield('photo_header')
+    @include('testing.photo_header')
+
+    @include('navbar')
 
     @yield('content')
-    
-    @yield('footer')
+
+    @include('footer')
 
     @yield('js')
   </body>

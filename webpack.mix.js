@@ -15,3 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+mix.sass('resources/scss/global.scss', 'public/css')
+    .sass('resources/scss/app.scss', 'public/css')
+    .sass('resources/scss/colors.scss', 'public/css')
+    .sass('resources/scss/fonts.scss', 'public/css')
+    .sass('resources/scss/backgrounds.scss', 'public/css')

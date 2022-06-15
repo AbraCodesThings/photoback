@@ -1,0 +1,16 @@
+@import 'backgrounds';
+@import 'fonts';
+
+div.photo-header{
+  background-image: $bg-1;
+  background-size: auto;
+  background-position: 0, 200px;
+  border-radius: 0 0 15px 15px;
+  padding:5%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lotion Regular';
+  color: white;
+}

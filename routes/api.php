@@ -19,7 +19,9 @@ use App\Http\Controllers\PostController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// Route::middleware('auth')->group(function () {
+//
+// });
 Route::post('/post', 'App\Http\Controllers\PostController@store')->name('upload_post');
 Route::get('/post', function () { return redirect('/test'); })->name('post');
 Route::get('/post/{id?}', 'App\Http\Controllers\PostController@index')->name('get_post');

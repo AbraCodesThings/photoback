@@ -23,5 +23,5 @@ Route::get('/', function () {
 ## en el futuro será un easter egg :)
 
 Route::get('/test', function () {
-    return view('test');
+    return view('home.home');
 });
