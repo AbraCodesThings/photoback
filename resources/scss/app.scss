@@ -1,5 +1,21 @@
 @import 'colors';
 
+/* Footer */
+body{
+  min-height: 100%;
+}
+
+#footer{
+  position: relative;
+  bottom: 0;
+  max-height: 200px;
+}
+
 p.lorem{
   color: $bg-color;
+  
+}
+
+h1, .text-marker{
+  font-family: 'PermanentMarker-Regular' !important;
 }

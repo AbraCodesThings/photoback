@@ -6,12 +6,17 @@
   <body>
     @include('testing.photo_header')
 
-    @include('navbar')
+    {{-- @include('navbar') --}}
 
     @yield('content')
 
-    @include('footer')
+    {{-- @include('footer') --}}
+
+    @yield('style')
+
+    @include('scripts')
 
     @yield('js')
+
   </body>
 </html>

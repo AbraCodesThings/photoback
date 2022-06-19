@@ -1,3 +1,5 @@
+/* Global CSS rules */
+
 @import 'backgrounds';
 @import 'fonts';
 
@@ -13,4 +15,8 @@ div.photo-header{
   justify-content: center;
   font-family: 'Lotion Regular';
   color: white;
+}
+
+.shadow{
+  box-shadow: 10% 10%;
 }

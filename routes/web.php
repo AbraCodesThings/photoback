@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('home'));
 });
 
 ## Ruta de pruebas ##
@@ -24,4 +25,13 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
     return view('home.home');
-});
+})->name('test');
+
+Route::get('/home', 'App\Http\Controllers\Home\HomeController@index')->name('home');
+Route::get('/about', 'App\Http\Controllers\About\AboutController@index')->name('about');
+Route::get('/signin', 'App\Http\Controllers\Signin\SigninController@index')->name('signin');
+Route::get('/login', 'App\Http\Controllers\Login\LoginController@index')->name('login');
+Route::get('/devinfo', 'App\Http\Controllers\Devinfo\DevinfoController@index')->name('devinfo');
+
+Route::post('/login', 'App\Http\Controllers\Login\LoginController@authenticate')->name('authenticate'); // <- should use the Auth middleware, TODO
+Route::post('/signin', 'App\Http\Controllers\Signin\SigninController@createUser')->name('createUser'); // <- should use the Auth middleware, TODO

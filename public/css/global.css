@@ -1,3 +1,8 @@
+/* Global CSS rules */
+body {
+  background-color: #aaa !important;
+}
+
 @font-face {
   font-family: "Poppins-Regular";
   src: url(/fonts/Poppins-Regular.ttf?35d26b781dc5fda684cce6ea04a41a75);
@@ -5,6 +10,10 @@
 @font-face {
   font-family: "Lotion Regular";
   src: url(/fonts/Lotion-Regular.ttf?71221db365a917beac435011c356b481) format("ttf");
+}
+@font-face {
+  font-family: "PermanentMarker-Regular";
+  src: url(/fonts/PermanentMarker-Regular.ttf?109a10dca0508e41aa127be1fcbe6b44);
 }
 div.photo-header {
   background-image: url(/images/1.jpg?199499046b134231b6c72101f0a2da47);
@@ -18,4 +27,8 @@ div.photo-header {
   justify-content: center;
   font-family: "Lotion Regular";
   color: white;
+}
+
+.shadow {
+  box-shadow: 10% 10%;
 }

@@ -1,5 +1,20 @@
 /* ## Color variables ## */
+/* Footer */
+body {
+  min-height: 100%;
+}
+
+#footer {
+  position: relative;
+  bottom: 0;
+  max-height: 200px;
+}
+
 p.lorem {
   color: red;
+}
+
+h1, .text-marker {
+  font-family: "PermanentMarker-Regular" !important;
 }
 
