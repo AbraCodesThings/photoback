@@ -32,6 +32,10 @@ Route::get('/about', 'App\Http\Controllers\About\AboutController@index')->name('
 Route::get('/signin', 'App\Http\Controllers\Signin\SigninController@index')->name('signin');
 Route::get('/login', 'App\Http\Controllers\Login\LoginController@index')->name('login');
 Route::get('/devinfo', 'App\Http\Controllers\Devinfo\DevinfoController@index')->name('devinfo');
+Route::get('/user-config', 'App\Http\Controllers\UserConfig\UserConfigController@index')->name('user-config');
+Route::get('/logout', 'App\Http\Controllers\Login\LoginController@logout')->name('logout');
+Route::get('/user-gallery/post', 'App\Http\Controllers\Upload\UploadController@index')->middleware('auth')->name('upload-form');
 
 Route::post('/login', 'App\Http\Controllers\Login\LoginController@authenticate')->name('authenticate'); // <- should use the Auth middleware, TODO
 Route::post('/signin', 'App\Http\Controllers\Signin\SigninController@createUser')->name('createUser'); // <- should use the Auth middleware, TODO
+Route::post('/user-config', 'App\Http\Controllers\UserConfig\UserConfigController@updateUser')->name('updateUser');

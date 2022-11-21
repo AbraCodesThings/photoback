@@ -6,7 +6,7 @@
   </head>
   <body>
     <p>
-      <h1>Wohohoooooo.</h1>
+      <h1>Página en construcción</h1>
       @yield('test_yield')
     </p>
       @yield('test_panel')

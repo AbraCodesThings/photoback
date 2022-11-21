@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="card d-flex m-4 justify-content-center">
-    <div class="card-header ">
+<div class="d-flex m-4 px-4 py-2 flex-column justify-content-center">
+    <div class="card shadow px-4 py-2 align-self-center">
         <h3 class="text-marker text-center">Sign In</h3>
     </div>
     <div class="card-body align-items-center justify-content p-4">
-        <div id="login-card" class="card card-body mx-auto shadow">
+        <div id="login-card" class="card card-body shadow mx-auto shadow">
             <form action="{{route('createUser')}}" method="POST" class="d-flex flex-column">
                 @csrf
                 <span class="text-marker">Username</span>
@@ -19,8 +19,8 @@
                 <span class="text-marker">Confirm Password</span>
                 <input class="form-control" type="password" name="password_confirm" required>
                 <div id="login-buttons" class="d-flex flex-nowrap mt-3 px-4">
-                    <a class="btn btn-primary me-auto" href="{{route('login')}}" type="submit">Login</a>
-                    <input class="btn btn-primary" type="button" value="Sign In">
+                    <a class="btn btn-primary me-auto" href="{{route('login')}}" type="button">Already an user? Log In!</a>
+                    <input class="btn btn-primary" type="submit" value="Send">
                 </div>
             </form> 
         </div>

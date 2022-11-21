@@ -19,20 +19,28 @@ class SigninController extends Controller
     }
 
     public function createUser(Request $request){
-        //$request->validate([ ... ])
-
-        User::create([
-            'name' => $request['name'],
-            'password' => bcrypt($request['password']),
-            'email' => $request['email']
+        $request->validate([ 
+            'name' => 'required',
+            'password' => 'required',
+            'password_confirm' => 'required'
         ]);
-
-        return redirect()->route('home');
-
-        // return User::create([
-        //     'name' => 'test',
-        //     'password' => bcrypt('testpassword123'),
-        //     'email' => 'test@test.com'
-        // ]);
+        
+        // Verify that the new user is not in the DB
+        // TODO
+        // Create user
+        
+        try{
+            if($request['password'] == $request['password_confirm']){
+                User::create([
+                    'name' => $request['name'],
+                    'password' => bcrypt($request['password']),
+                    'email' => $request['email']
+                ]);
+                return redirect()->route('home');
+            }
+            return redirect()->back()->withErrors(['msg' => 'Passwords must match.']);
+        } catch(Throwable $e) {
+            return redirect()->back()->withErrors(['msg' => 'Backend error! Leave some feedback in GitHub please :)']);
+        }
     }
 }

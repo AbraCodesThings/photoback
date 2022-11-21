@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Models\User;
 
 class UserController extends Controller
 {
@@ -10,7 +11,7 @@ class UserController extends Controller
       TODO
     */
     public function getUser($name) {
-      return User::where('name' = $name)->first();
+      return User::where('name' == $name)->first();
     }
 
     public function getAllUsers() {

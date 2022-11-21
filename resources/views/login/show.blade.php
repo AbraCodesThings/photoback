@@ -1,34 +1,34 @@
 @extends('master')
 
 @section('content')
-
-<div class="card d-flex m-4 justify-content-center">
-    <div class="card-header ">
-        <h3 class="text-marker text-center">Login</h3>
-        @auth
-            <span>You are logged in as {{Auth::user()->name}}</span>
-        @endauth
-        @guest
-            <span>You are a guest!</span>
-        @endguest
-    </div>
-    <div class="card-body align-items-center justify-content p-4">
-        <div id="login-card" class="card card-body mx-auto shadow">
-            <form action="{{route('authenticate')}}" method="POST" class="d-flex flex-column">
-                @csrf
-                <span class="text-marker">Username</span>
-                <input class="mb-3 form-control" type="text" name="name" placeholder="Cool username">
-                <span class="text-marker">Password</span>
-                <input class="form-control" type="password" name="password">
-                <div id="login-buttons" class="d-flex flex-nowrap mt-3 px-4">
-                    <input class="btn btn-primary me-auto" type="submit" value="Log In">
-                    <a class="btn btn-primary" href="{{route('signin')}}">Sign in</a>
-                </div>
-            </form> 
+<div class="mb-4 h-90">
+    <div class="card d-flex m-4 justify-content-center">
+        <div class="card-header ">
+            <h3 class="text-marker text-center">Login</h3>
+            @auth
+                <span>You are logged in as {{Auth::user()->name}}</span>
+            @endauth
+            @guest
+                <span>You are a guest!</span>
+            @endguest
+        </div>
+        <div class="card-body align-items-center justify-content p-4">
+            <div id="login-card" class="card card-body mx-auto shadow">
+                <form action="{{route('authenticate')}}" method="POST" class="d-flex flex-column">
+                    @csrf
+                    <span class="text-marker">Username</span>
+                    <input class="mb-3 form-control" type="text" name="name" placeholder="Cool username">
+                    <span class="text-marker">Password</span>
+                    <input class="form-control" type="password" name="password">
+                    <div id="login-buttons" class="d-flex flex-nowrap mt-3 px-4">
+                        <input class="btn btn-primary me-auto" type="submit" value="Log In">
+                        <a class="btn btn-primary" href="{{route('signin')}}">Sign in</a>
+                    </div>
+                </form> 
+            </div>
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('style')

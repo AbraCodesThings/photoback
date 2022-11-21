@@ -60,9 +60,15 @@
           {{-- Navigation Buttons --}}
       
           <div id="buttons" class="d-flex p-3 mb-2 mx-auto border rounded shadow">
-              <a href="{{route('signin')}}" class="btn btn-primary shadow">Sign me in!</a>
-              <a href="{{route('login')}}" class="btn btn-primary mx-4 shadow">Log me in!</a>
-              <a href="{{route('devinfo')}}" class="btn btn-primary shadow">I'm a developer!</a>
+			  @if(Auth::guest())
+              <a href="{{route('signin')}}" class="btn btn-primary shadow">Create account</a>
+			  <a href="{{route('login')}}" class="btn btn-primary mx-4 shadow">Login</a>
+			  @elseif(Auth::user())
+			  <a href="{{route('upload-form')}}" class="btn btn-primary mx-4 shadow">Upload image</a>
+			  <a href="{{route('user-config')}}" class="btn btn-primary mx-4 shadow">User configuration</a>	
+			  <a href="{{route('logout')}}" class="btn btn-primary mx-4 shadow">Logout</a>
+			  @endif
+              <a href="{{route('devinfo')}}" class="btn btn-primary shadow">Info for developers</a>
           </div>
 		</div>
 	</div>
@@ -78,6 +84,11 @@
 		div.home-content {
 			border-style: groove;
 			border: 10px black;
+		}
+
+		#buttons {
+			display: flexbox;
+			gap: 12px;
 		}
 
     @media only screen and (max-width: 768px){

@@ -26,11 +26,16 @@ class LoginController extends Controller
             'password' => 'required | max:16'
         ]);
         
-
         if(Auth::attempt(['name' => $request['name'], 'password' => $request['password']])){
-            return redirect()->route('home');
+            return redirect()->intended('home')->withSuccess('Logged in!');
         } else {
-            return redirect()->back();
+            dd($request);
+            return redirect()->back()->withErrors('Something failed :(');
         }
-    } 
+    }
+    
+    public function logout(){
+        Auth::logout();
+        return redirect()->back();
+    }
 }
