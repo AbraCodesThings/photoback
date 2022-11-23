@@ -27,6 +27,9 @@ class SigninController extends Controller
         
         // Verify that the new user is not in the DB
         // TODO
+
+        
+
         // Create user
         
         try{

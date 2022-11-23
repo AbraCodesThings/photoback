@@ -20,9 +20,9 @@
                     <input class="mb-3 form-control" type="text" name="name" placeholder="Cool username">
                     <span class="text-marker">Password</span>
                     <input class="form-control" type="password" name="password">
-                    <div id="login-buttons" class="d-flex flex-nowrap mt-3 px-4">
-                        <input class="btn btn-primary me-auto" type="submit" value="Log In">
-                        <a class="btn btn-primary" href="{{route('signin')}}">Sign in</a>
+                    <div id="login-buttons" class="d-flex justify-content-between mt-3 px-4">
+                        <a class="btn btn-primary" href="{{route('signin')}}">Create Account</a>
+                        <input class="btn btn-primary" type="submit" value="Login">
                     </div>
                 </form> 
             </div>
@@ -58,6 +58,8 @@
         #login-buttons input{
             width:100% !important;
         }
+
+
     }
 </style>    
 @endsection

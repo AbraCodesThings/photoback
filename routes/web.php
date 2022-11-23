@@ -24,7 +24,7 @@ Route::get('/', function () {
 ## en el futuro será un easter egg :)
 
 Route::get('/test', function () {
-    return view('home.home');
+    return view('testing.test_panel');
 })->name('test');
 
 Route::get('/home', 'App\Http\Controllers\Home\HomeController@index')->name('home');
@@ -39,3 +39,8 @@ Route::get('/user-gallery/post', 'App\Http\Controllers\Upload\UploadController@i
 Route::post('/login', 'App\Http\Controllers\Login\LoginController@authenticate')->name('authenticate'); // <- should use the Auth middleware, TODO
 Route::post('/signin', 'App\Http\Controllers\Signin\SigninController@createUser')->name('createUser'); // <- should use the Auth middleware, TODO
 Route::post('/user-config', 'App\Http\Controllers\UserConfig\UserConfigController@updateUser')->name('updateUser');
+Route::post('/upload', 'App\Http\Controllers\Upload\UploadController@uploadImage')->middleware('auth')->name('upload');
+
+/* TODO
+    Limpiar rutas y controladores
+*/

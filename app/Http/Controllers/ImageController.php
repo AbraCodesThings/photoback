@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -32,12 +33,20 @@ class ImageController extends Controller
      *         autentificado. ('auth')
      */
 
-    public function uploadImage(Request $request, $user){
-      /* Validación */
-      /* Copiar la imagen a la ruta de su user */
-      /* Devolver true o false dependiendo de si consigque guardarse o no.
-        Debe venir desde el front ya comprimida.
-      */
+    public function uploadImage(Request $request){
+      /* Validación, TODO */
+      $validated = $request->validate([
+        'image' => 'required'
+      ]);
+
+      if($validated){
+        $username = auth()->user()->name;
+        $path = Storage::disk('local')->put('public/images/'.$username, $request->file('image'));
+        echo($path);
+        return redirect()->back()->withSuccess('Image uploaded successfully!');
+      } 
+
+      return redirect()->back()->withErrors("Something went wrong! Contact the administrator.");
     }
 
     /**

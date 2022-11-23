@@ -18,10 +18,10 @@ class ImageStorageController extends Controller {
             This function should assign an unique name to the file in the filesystem
             and return whether it is successful or not.
         */
-            return dd($request);
+            
             // $filename = $request->file('image')->getClientOriginalName();
             $filename = 'test';
-            $success = $request->file('image')->store(Auth::user() . '/' . $filename) ? true : false; 
+            $success = $request->file('image')->store(Auth::user() . '/' . $filename); 
             return $success;
     }
     public function get($username, $filename){
