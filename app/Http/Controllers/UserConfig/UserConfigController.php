@@ -38,4 +38,17 @@ class UserConfigController extends Controller
             return redirect()->back()->withErrors(['msg' => 'Backend error! Leave some feedback in GitHub please :)']);
         }
     }
+
+    public function deleteUser(){
+        try{
+            $user = Auth::user();
+            $user->delete();
+            //TODO: borrar la carpeta de imágenes del usuario borrado
+            return redirect()->intended('home')->withSuccess('Account deleted.');
+        } catch(Exception $e){
+            return redirect()->back()->withErrors("Whoops! Something went wrong.");
+        }
+    }
+
+    
 }

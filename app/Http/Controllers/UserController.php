@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -32,6 +34,8 @@ class UserController extends Controller
           'email' => $request['email'],
           'password' => bcrypt($request['password'])
         ]);
+
+        //en este punto debería mandar un email de confirmación
         return redirect('home');
       } catch (\Exception $e) {
         dd($e);
@@ -41,12 +45,21 @@ class UserController extends Controller
     public function removeUser(Request $request){
 
       $request->validate([
-        'name' => 'required'
+        'password' => 'required'
       ]);
+
       try {
-        User::where('name', $name)->delete();
+        $user = Auth::user();
+        $passwordMatches = Hash::check($request['password'], $user->password);
+        if($passwordMatches){
+          $user->delete();
+          return redirect('home')->withSuccess('Account deleted.');
+        } else {
+          return redirect()->back()->withErrors('Incorrect password');
+        }
       } catch (\Exception $e) {
-        dd($e);
+        
+        return redirect()->back()->withErrors('Something went wrong, contact the administrator' . $e);
       }
     }
 
@@ -57,13 +70,23 @@ class UserController extends Controller
         'email' => 'required',
         'password' => 'required'
       ]);
-
       try {
-        User::where('name', $request['name'])->update(['name', 'email', 'password']);
-        return true;
+        $user = Auth::user();
+        $passwordMatches = Hash::check($request['password'], $user->password); 
+        if($passwordMatches){
+          $user->name = $request['name'];
+
+          //TODO: resto de campos a actualizar
+
+          $user->save();
+          return redirect('home')->withSuccess('Account updated succesfully!');
+        } else {
+          return redirect()->back()->withErrors('Invalid password.');
+        }
       } catch (\Exception $e) {
-        dd($e);
-        return false;
+        //dd($e); //TODO
+        return redirect()->back()->withErrors('Something went wrong, contact the administrator. '. $e);
       }
     }
+
 }

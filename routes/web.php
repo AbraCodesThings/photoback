@@ -35,6 +35,7 @@ Route::get('/devinfo', 'App\Http\Controllers\Devinfo\DevinfoController@index')->
 Route::get('/user-config', 'App\Http\Controllers\UserConfig\UserConfigController@index')->name('user-config');
 Route::get('/logout', 'App\Http\Controllers\Login\LoginController@logout')->name('logout');
 Route::get('/user-gallery/post', 'App\Http\Controllers\Upload\UploadController@index')->middleware('auth')->name('upload-form');
+Route::get('/my-gallery', 'App\Http\Controllers\GalleryController@userGalleryIndex')->middleware('auth')->name('my-gallery');
 
 Route::post('/login', 'App\Http\Controllers\Login\LoginController@authenticate')->name('authenticate'); // <- should use the Auth middleware, TODO
 Route::post('/signin', 'App\Http\Controllers\Signin\SigninController@createUser')->name('createUser'); // <- should use the Auth middleware, TODO

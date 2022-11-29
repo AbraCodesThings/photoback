@@ -20,7 +20,7 @@
                         @csrf
                         <input class="mb-2" type="file" name="image" required>
                         <label class="mb-2">Title: </label> <input class="mb-2" type="text" name="title" placeholder="Title">
-                        <label class="mb-2">Tags (separated by spaces): </label> <input class="mb-2" type="text" name="title" placeholder="Tags">
+                        <label class="mb-2">Tags (separated by spaces): </label> <input class="mb-2" type="text" name="tags" placeholder="Tags">
                         <input class="mb-2" type="submit" value="Upload">
                     </form>
                 </div>

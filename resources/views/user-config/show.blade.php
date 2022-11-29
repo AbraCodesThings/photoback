@@ -21,3 +21,7 @@
         </form>
     </div>
 @endsection
+
+@section('js')
+
+@endsection
