@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Signin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Jenssegers\Agent\Agent;
 use App\Models\User;
 
@@ -13,9 +14,12 @@ class SigninController extends Controller
 
     public static function index(){
         $agent = new Agent();
-        return view('signin.show', [
-            'agent' => $agent,
-        ]);
+        
+        if(!Auth::check())
+            return view('signin.show', [
+                'agent' => $agent,
+            ]);
+        return redirect('home');
     }
 
     public function createUser(Request $request){
