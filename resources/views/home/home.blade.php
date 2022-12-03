@@ -67,7 +67,7 @@
 			  <a href="{{route('upload-form')}}" class="btn btn-primary mx-4 shadow">Upload image</a>
 			  <a href="{{route('user-config')}}" class="btn btn-primary mx-4 shadow">User configuration</a>	
 			  <a href="{{route('logout')}}" class="btn btn-primary mx-4 shadow">Logout</a>
-			  <a href="{{route('my-gallery')}}" class="btn btn-primary mx-4 shadow">My gallery</a>
+			  <a href="{{route('gallery', ['user' => Auth::user()->name])}}" class="btn btn-primary mx-4 shadow">My gallery</a>
 
 			  
 			  @endif
