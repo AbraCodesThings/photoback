@@ -9,6 +9,7 @@ use App\Http\Controllers\Devinfo\DevinfoController;
 use App\Http\Controllers\Upload\UploadController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\UserConfig\UserConfigController;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,10 +38,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-account', [SigninController::class, 'index'])->name('signin');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/devinfo', [DevinfoController::class, 'index'])->name('devinfo');
-Route::get('/user-config', [UserConfigController::class, 'index'])->name('user-config');
+Route::get('/user-config', [UserConfigController::class, 'index'])->name('user-config'); //TODO -> parámetros
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/user-gallery/post', [UploadController::class, 'index'])->middleware('auth')->name('upload-form');
-Route::get('/my-gallery', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('my-gallery'); //TODO: se puede hacer una sola función que devuelva la galería del user que se le pase por parámetro
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+//Route::get('/my-gallery', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('my-gallery'); //TODO: se puede hacer una sola función que devuelva la galería del user que se le pase por parámetro
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate'); 
 Route::post('/signin', [SigninController::class, 'createUser'])->name('createUser'); 
@@ -49,7 +51,7 @@ Route::post('/upload', [UploadController::class, 'uploadImage'])->middleware('au
 
 //Pruebas para parametrizar rutas
 
-Route::get('/gallery/{user?}', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('gallery');
+Route::get('/gallery/{user}', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('gallery');
 
 
 /* TODO

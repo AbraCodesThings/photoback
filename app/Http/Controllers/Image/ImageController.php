@@ -10,8 +10,9 @@ use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
 {
-    public function index(){
-      return view();
+    public function index(Request $request){
+      //TODO
+      return dd($request);
     }
 
 

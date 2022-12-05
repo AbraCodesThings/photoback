@@ -1,6 +1,14 @@
 @extends('master')
 
 @section('content')
+	<div class="d-flex flex-row justify-content-center mt-3 search-bar">
+		<form action="{{route('search')}}" method="GET" role="search">	{{-- TODO --}}
+			<input type="text" name="tags" placeholder="tags">
+			<button type="submit" title="Search">
+				<span>Search</span>
+			</button>
+		</form>
+	</div>
 	<div class="mt-2 mx-3 p-3 mw-100 home-content ">
 
 		{{-- Main content card --}}
