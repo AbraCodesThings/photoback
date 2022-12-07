@@ -29,6 +29,12 @@ class UserConfigController extends Controller
         try{
             if(Hash::check($request->password, Auth::user()->password)){
                 $user->name = $request['name'];
+                if($request["changePassword"]){
+                    if($request["newPassword"] != $request["newPasswordConfirm"]){
+                        return redirect()->back()->withErrors("New Passwords must match.");
+                    }
+                    $user->password = bcrypt($request["newPassword"]);
+                }
                 $user->save();
                 return redirect()->intended('home')->withSuccess('Account updated successfully!');
             } else {

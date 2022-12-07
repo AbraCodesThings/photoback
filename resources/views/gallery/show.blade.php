@@ -1,6 +1,16 @@
 @extends('master')
 
 @section('content')
+    <div class="d-flex flex-row justify-content-center mt-3 search-bar">
+        <form action="{{route('search')}}" method="GET" role="search">
+            <div class="form-group d-flex flex-row">	{{-- TODO --}}
+                <input class="form-control mr-2" type="text" name="tags" placeholder="tags">
+                <button class="btn btn-primary" type="submit" title="Search">
+                    <span>Search</span>
+                </button>
+            </div>
+        </form>
+    </div>
     <div class="card card-body d-flex flex-row m-2 ">
         {{-- aquí va un @foreach que itera sobre una serie de fotos que trae el backend y se crea una miniatura clickable --}}
         @if($images)
