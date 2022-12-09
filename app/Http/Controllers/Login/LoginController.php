@@ -29,7 +29,7 @@ class LoginController extends Controller
         if(Auth::attempt(['name' => $request['name'], 'password' => $request['password']])){
             return redirect()->intended('home')->withSuccess('Logged in!');
         } else {
-            dd($request);
+           // dd($request);  
             return redirect()->back()->withErrors('Something failed :(');
         }
     }

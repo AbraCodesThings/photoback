@@ -10,6 +10,8 @@ use App\Http\Controllers\Upload\UploadController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\UserConfig\UserConfigController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ImageStorage\ImageStorageController;
+use App\Http\Controllers\Image\ImageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +54,8 @@ Route::post('/upload', [UploadController::class, 'uploadImage'])->middleware('au
 //Pruebas para parametrizar rutas
 
 Route::get('/gallery/{user}', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('gallery');
-
+//Route::get('/gallery/{username}/{filename}', [ImageStorageController::class, 'get'])->name('getImageTest');
+Route::get('/gallery/{username}/{image_title}', [ImageController::class, 'viewImage'])->name('image-details');
 
 /* TODO
     Limpiar rutas y controladores tal que así -> Route::get('/home', [HomeCoApp\Http\Controllers\UserConfig\UserConfigControllerntroller::class, 'index'])->name('home');

@@ -16,10 +16,13 @@
         @if($images)
             @foreach($images as $image)
                 <div class="border m-2 w-50 h-50 image d-flex flex-column">
-                    <img class="mw-100 mh-100" src="{{Storage::url($image->path)}}" alt="{{$image->title}}">
+                    <a href="{{route('image-details', ["username"=>$user->name, "image_title"=>$image->title])}}">
+                        <img class="mw-100 mh-100" src="{{Storage::url($image->path)}}" alt="{{$image->title}}">
+                    </a>
                     <span class="text-center">{{$image->title}}</span>
                 </div>
             @endforeach
+            {{-- else : mensaje de que no se han encontrado resultados --}}
         @endif
     </div>
 @endsection

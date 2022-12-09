@@ -16,7 +16,7 @@ class GalleryController extends Controller
         $user = User::where('name', $user)->first();
         if($user){
             $images = ImageController::getUserImages($user);
-            return view('gallery.show')->with('images',$images);
+            return view('gallery.show')->with('images',$images)->with('user', $user);
         }
         return redirect('home')->withErrors('That user does not exist.');
     }

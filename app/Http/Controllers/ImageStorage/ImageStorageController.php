@@ -28,6 +28,7 @@ class ImageStorageController extends Controller {
         /* Check that the image is public, TODO */
 
         return Storage::url($username . '/' . $filename);
+        // return asset('storage/' . $username . '/' . $filename);
     }
     public function getAll($username){
         return Storage::getAll($username);

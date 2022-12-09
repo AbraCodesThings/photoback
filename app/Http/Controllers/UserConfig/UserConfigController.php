@@ -14,9 +14,13 @@ class UserConfigController extends Controller
     //
     public function index(){
         $agent = new Agent();
-        return view('user-config.show', [
-            'agent' => $agent,
-        ]);
+        $user = Auth::user();
+        if($user){
+            return view('user-config.show', [
+                'agent' => $agent,
+            ]);
+        }
+        return redirect()->intended('home');
     }
 
     public function updateUser(Request $request){
@@ -24,8 +28,9 @@ class UserConfigController extends Controller
             'name' => 'required',
             'password' => 'required',
         ]);
-        $oldName = Auth::user()->name;
+        
         $user = Auth::user();
+        //too many returns :(
         try{
             if(Hash::check($request->password, Auth::user()->password)){
                 $user->name = $request['name'];
@@ -36,7 +41,7 @@ class UserConfigController extends Controller
                     $user->password = bcrypt($request["newPassword"]);
                 }
                 $user->save();
-                return redirect()->intended('home')->withSuccess('Account updated successfully!');
+                return redirect()->intended('home')->withSuccess("Account updated successfully!");
             } else {
                 return redirect()->back()->withErrors(['msg' => "Authentication error."]);
             }
