@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserConfigController extends Controller
 {
@@ -25,21 +26,19 @@ class UserConfigController extends Controller
 
     public function updateUser(Request $request){
         $request->validate([ 
+            // TODO
             'name' => 'required',
             'password' => 'required',
         ]);
         
         $user = Auth::user();
+        $oldUserName = $user->name;
         //too many returns :(
         try{
             if(Hash::check($request->password, Auth::user()->password)){
                 $user->name = $request['name'];
-                if($request["changePassword"]){
-                    if($request["newPassword"] != $request["newPasswordConfirm"]){
-                        return redirect()->back()->withErrors("New Passwords must match.");
-                    }
-                    $user->password = bcrypt($request["newPassword"]);
-                }
+                $this->renameUserFolder($oldUserName, $request);
+                $this->changePassword($user, $request);
                 $user->save();
                 return redirect()->intended('home')->withSuccess("Account updated successfully!");
             } else {
@@ -59,6 +58,23 @@ class UserConfigController extends Controller
         } catch(Exception $e){
             return redirect()->back()->withErrors("Whoops! Something went wrong.");
         }
+    }
+
+    private function renameUserFolder($oldUserName, Request $request){
+        if($oldUserName != $request['name'])
+            return Storage::rename('public/images/' . $oldUserName, 'public/images/' . $request['name']);
+        return false;
+    }
+
+    private function changePassword(User $user, Request $request){
+        if($request["changePassword"]){
+            if($request["newPassword"] != $request["newPasswordConfirm"]){
+                return redirect()->back()->withErrors("New Passwords must match.");
+            }
+            $user->password = bcrypt($request["newPassword"]);
+            return true;
+        }
+        return false;
     }
 
     

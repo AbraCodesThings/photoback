@@ -20,4 +20,5 @@ class GalleryController extends Controller
         }
         return redirect('home')->withErrors('That user does not exist.');
     }
+
 }

@@ -4,25 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Image;
 
-class Image extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'comment',
         'user_id',
-        'public',
-        'path',
-        'tags'
+        'image_id'
     ];
 
-    public function tags(){
-        return $this->belongsToMany(Tag::class);
+    public function image(){
+        return $this->belongsTo(Image::class);
     }
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-    
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Image;
 use App\Models\User;
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
 
 
@@ -18,11 +19,12 @@ class ImageController extends Controller
 
     public function viewImage($username, $image_title, Request $request){
       $user = User::where('name', $username)->get()->first();
-      $image = Image::where('uploader', $user->id)
+      $image = Image::where('user_id', $user->id)
                 ->where('title', $image_title)
                 ->get()->first();
-      //return dd($image);
-      return view("gallery.details")->with("image", $image);
+      $comments = $this->getComments($image);
+      // return dd($image);
+      return view("gallery.details")->with("image", $image)->with("user",$user)->with("comments",$comments);
     }
 
 
@@ -32,7 +34,12 @@ class ImageController extends Controller
 
     public function getUserImages($user){
       /** Returns a collection of an user's images. */
-      return Image::where('uploader', $user->id)->get();
+      return Image::where('user_id', $user->id)->get();
     }
+
+    private function getComments($image){
+      $comments = Comment::where('image_id', $image->id)->get();
+      return $comments;
+  }
     
 }

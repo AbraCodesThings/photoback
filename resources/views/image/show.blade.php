@@ -7,7 +7,7 @@
         <div class="image-data">
             {{-- datos de la imagen --}}
             <span>Title: {{$image->title}}</span>
-            <span>Uploaded by: {{$image->uploader}}</span>
+            <span>Uploaded by: {{$image->user_id}}</span>
         </div>
     </div>
     <div class="comment-box">

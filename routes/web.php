@@ -12,6 +12,7 @@ use App\Http\Controllers\UserConfig\UserConfigController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ImageStorage\ImageStorageController;
 use App\Http\Controllers\Image\ImageController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,7 +43,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/devinfo', [DevinfoController::class, 'index'])->name('devinfo');
 Route::get('/user-config', [UserConfigController::class, 'index'])->name('user-config'); //TODO -> parámetros
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/user-gallery/post', [UploadController::class, 'index'])->middleware('auth')->name('upload-form');
+Route::get('/post', [UploadController::class, 'index'])->middleware('auth')->name('upload-form');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 //Route::get('/my-gallery', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('my-gallery'); //TODO: se puede hacer una sola función que devuelva la galería del user que se le pase por parámetro
 
@@ -56,6 +57,7 @@ Route::post('/upload', [UploadController::class, 'uploadImage'])->middleware('au
 Route::get('/gallery/{user}', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('gallery');
 //Route::get('/gallery/{username}/{filename}', [ImageStorageController::class, 'get'])->name('getImageTest');
 Route::get('/gallery/{username}/{image_title}', [ImageController::class, 'viewImage'])->name('image-details');
+Route::post('/gallery/{username}/{image_title}/post', [CommentController::class, 'create'])->middleware('auth')->name('create-comment');
 
 /* TODO
     Limpiar rutas y controladores tal que así -> Route::get('/home', [HomeCoApp\Http\Controllers\UserConfig\UserConfigControllerntroller::class, 'index'])->name('home');

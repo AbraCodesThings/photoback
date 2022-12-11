@@ -26,6 +26,9 @@
                 <input type="submit" class="btn btn-primary my-2" value="Update my account!">
             </div>
         </form>
+        {{-- <form action="{{route('deleteUser')}}" method="POST">
+            
+        </form> --}}
     </div>
 @endsection
 

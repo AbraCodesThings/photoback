@@ -36,13 +36,14 @@ class UploadController extends Controller {
           $username = auth()->user()->name;
           $newImage = Image::create([
               'title' => $request['title'],
-              'uploader' => auth()->user()->id,
+              'user_id' => auth()->user()->id,
               'public' => true, //TODO
               // 'path' => Storage::disk('local')->put('public/images/'.$username, $request->file('image')) //TODO
               ]);
               
           $this->handleTags($request['tags'], $newImage);
           $path = Storage::disk('local')->putFile('public/images/'.$username , $request->file('image'));
+          $path = explode('/', $path)[3];   //
           $newImage->path = $path;
           $newImage->save();
           //echo($path);
