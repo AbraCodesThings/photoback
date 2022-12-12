@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ImageStorage\ImageStorageController;
 use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,8 +49,9 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 //Route::get('/my-gallery', [GalleryController::class, 'userGalleryIndex'])->middleware('auth')->name('my-gallery'); //TODO: se puede hacer una sola función que devuelva la galería del user que se le pase por parámetro
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate'); 
-Route::post('/signin', [SigninController::class, 'createUser'])->name('createUser'); 
-Route::post('/user-config', [UserConfigController::class, 'updateUser'])->name('updateUser');
+Route::post('/signin', [SigninController::class, 'createUser'])->name('createUser');
+Route::post('/delete-account', [UserController::class, 'deleteUser'])->name('delete-account');
+Route::post('/user-config', [UserConfigController::class, 'updateUser'])->middleware('auth')->name('updateUser');
 Route::post('/upload', [UploadController::class, 'uploadImage'])->middleware('auth')->name('upload');
 
 //Pruebas para parametrizar rutas

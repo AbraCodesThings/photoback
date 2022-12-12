@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mb-4 h-90">
-    <div class="card d-flex m-4 justify-content-center">
+    <div class="card d-flex m-4 mx-5 justify-content-center">
         <div class="card-header ">
             <h3 class="text-marker text-center">Login</h3>
             @auth

@@ -2,11 +2,11 @@
 
 @section('content')
 	
-	<div class="mt-2 mx-3 p-3 mw-100 home-content ">
+	<div class="mt-2 mb-4 mw-100 home-content ">
 
 		{{-- Main content card --}}
 
-		<div class="card shadow">
+		<div class="card shadow mx-5">
 			<h1 class="card-header text-center">A free open source image hosting API!</h1>
 			<h4 class="p-3 text-center">
 				Quick, short and easy: this is an image hosting API free for everybody to use and tinker with!

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="d-flex m-4 px-4 py-2 flex-column justify-content-center">
+<div class="d-flex mt-3 py-2 flex-column justify-content-center">
     <div class="card shadow px-4 py-2 align-self-center">
         <h3 class="text-marker text-center">Create Account</h3>
     </div>

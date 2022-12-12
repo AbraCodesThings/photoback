@@ -2,8 +2,8 @@
 
 @section('content')
     
-    <div class="card card-body d-flex flex-row m-2 ">
-        @if($images)
+    <div class="card card-body d-flex flex-row m-2 mx-5 ">
+        @if($images->count() >= 1)
             @foreach($images as $image)
                 <div class="border m-2 w-50 h-50 image d-flex flex-column">
                     <a href="{{route('image-details', ["username"=>$image->user->name, "image_title"=>$image->title])}}">
@@ -13,6 +13,8 @@
                 </div>
             @endforeach
             {{-- else : mensaje de que no se han encontrado resultados --}}
+        @else
+                <span class="mx-auto">No images here!</span>
         @endif
     </div>
 @endsection

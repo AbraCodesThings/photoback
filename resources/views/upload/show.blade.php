@@ -2,17 +2,6 @@
 
 @section('content')
     <div class="container h-90">
-
-        @if(Session::has('success'))
-        <div class="alert alert-success mt-4">
-            {{Session::get('success')}}
-        </div>
-        @elseif(Session::has('errors'))
-        <div class="alert alert-success mt-4">
-            {{Session::get('errors')}}
-        </div>
-        @endif
-
         <div class="row">
             <div class="col-md">
                 <div class="card m-3 mx-auto p-2 d-flex flex-column align-content-center">

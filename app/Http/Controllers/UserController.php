@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\User;
+use App\Models\User;
+use App\Models\Image;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ImageStorage\ImageStorageController;
 
 
 class UserController extends Controller
@@ -88,5 +92,20 @@ class UserController extends Controller
         return redirect()->back()->withErrors('Something went wrong, contact the administrator. '. $e);
       }
     }
+
+    public function deleteUser(Request $request){
+      $user = Auth::user();
+      if(Hash::check($request["password"], $user->password)){
+          Image::where('user_id', $user->id)->delete();
+          Comment::where('user_id', $user->id)->delete();
+          ImageStorageController::deleteUserDirectory($user);
+          $user->delete();
+          return redirect()->home()->withSuccess("Account deleted.");
+      }
+      else {
+          return redirect()->back()->withErrors("Incorrect password.");
+      }
+      return redirect()->home()->withErrors("Something went wrong. Try again later.");
+  }
 
 }

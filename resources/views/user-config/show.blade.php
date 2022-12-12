@@ -26,9 +26,32 @@
                 <input type="submit" class="btn btn-primary my-2" value="Update my account!">
             </div>
         </form>
-        {{-- <form action="{{route('deleteUser')}}" method="POST">
-            
-        </form> --}}
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-marker" id="exampleModalLabel">Delete account?</h5>
+                  
+                </div>
+                <div class="modal-body">
+                  <span>Please enter your password to confirm your account's deletion.</span>
+                  <form action="{{route('delete-account')}}" method="POST">
+                    @csrf
+                    <input type="password" class="form-control my-2" name="password" id="">
+                    <div class="d-flex mt-1">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary mx-2">Delete Account</button>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+        <div id="buttons" class="d-flex flex-column mb-3 mx-auto w-50">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">Delete Account</button>
+        </div>
     </div>
 @endsection
 
