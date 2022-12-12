@@ -4,7 +4,7 @@
 
 <div class="d-flex m-4 px-4 py-2 flex-column justify-content-center">
     <div class="card shadow px-4 py-2 align-self-center">
-        <h3 class="text-marker text-center">Sign In</h3>
+        <h3 class="text-marker text-center">Create Account</h3>
     </div>
     <div class="card-body align-items-center justify-content p-4">
         <div id="login-card" class="card card-body shadow mx-auto shadow">

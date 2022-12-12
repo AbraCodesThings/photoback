@@ -5,7 +5,8 @@
 
   <body>
     @include('testing.photo_header')
-
+    @include('buttons')
+    @include('searchbox')
     {{-- @include('navbar') --}}
 
     @yield('content')

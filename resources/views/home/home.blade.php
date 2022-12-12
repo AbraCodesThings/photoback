@@ -1,17 +1,6 @@
 @extends('master')
 
 @section('content')
-
-	<div class="d-flex flex-row justify-content-center mt-3 search-bar">
-		<form action="{{route('search')}}" method="GET" role="search">
-			<div class="form-group d-flex flex-row">	{{-- TODO --}}
-				<input class="form-control mr-2" type="text" name="tags" placeholder="tags">
-				<button class="btn btn-primary" type="submit" title="Search">
-					<span>Search</span>
-				</button>
-			</div>
-		</form>
-	</div>
 	
 	<div class="mt-2 mx-3 p-3 mw-100 home-content ">
 
@@ -68,23 +57,6 @@
 					</li>
 				</ul>
 			</div>
-      
-          {{-- Navigation Buttons --}}
-      
-          <div id="buttons" class="d-flex p-3 mb-2 mx-auto border rounded shadow">
-			  @if(Auth::guest())
-              <a href="{{route('signin')}}" class="btn btn-primary shadow">Create account</a>
-			  <a href="{{route('login')}}" class="btn btn-primary mx-4 shadow">Login</a>
-			  @elseif(Auth::user())
-			  <a href="{{route('upload-form')}}" class="btn btn-primary mx-4 shadow">Upload image</a>
-			  <a href="{{route('user-config')}}" class="btn btn-primary mx-4 shadow">User configuration</a>	
-			  <a href="{{route('logout')}}" class="btn btn-primary mx-4 shadow">Logout</a>
-			  <a href="{{route('gallery', ['user' => Auth::user()->name])}}" class="btn btn-primary mx-4 shadow">My gallery</a>
-
-			  
-			  @endif
-              <a href="{{route('devinfo')}}" class="btn btn-primary shadow">Info for developers</a>
-          </div>
 		</div>
 	</div>
 @endsection
