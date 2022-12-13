@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('title', 50);
             // $table->integer('user_id');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('public')->default(true);
             $table->string('path')->nullable();
             $table->timestamps();
