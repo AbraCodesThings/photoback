@@ -15,7 +15,8 @@
         </div>
     @elseif(Session::has('errors'))
         <div class="alert alert-danger mt-4 mx-5">
-            {{Session::get('errors')}}
+            {{-- {{Session::get('errors')}} --}}
+            {{$errors->first()}}
         </div>
     @endif
     {{-- @include('navbar') --}}
