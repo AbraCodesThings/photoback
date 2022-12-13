@@ -17,7 +17,7 @@ use App\Models\Comment;
 
 class SigninController extends Controller
 {
-    //TODO
+    //TODO renombrar esta clase, no tiene mucho sentido el nombre que tiene IMHO
 
     public static function index(){
         $agent = new Agent();
@@ -31,15 +31,14 @@ class SigninController extends Controller
 
     public function createUser(Request $request){
         $request->validate([ 
-            'name' => 'required',
-            'password' => 'required',
-            'password_confirm' => 'required'
+            'name' => 'required | max:25',
+            'password' => 'required | max:16',
+            'password_confirm' => 'required | max:16'
         ]);
         
         // Verify that the new user is not in the DB
-        // TODO
-
-        
+        if(User::where('name', $request['name'])->get()->first())
+            return redirect()->back()->withErrors('That user already exists! Try another username, maybe?');
 
         // Create user
         
@@ -51,6 +50,10 @@ class SigninController extends Controller
                     'email' => $request['email'],
                     'remember_token' => Str::random(10)
                 ]);
+
+                //TODO: en este punto debería mandar el correo de verificación de cuenta
+
+                Auth::attempt(['name' => $request['name'], 'password' => $request['password']]);
                 return redirect()->route('home')->withSuccess('Account created!');
             }
             return redirect()->back()->withErrors(['msg' => 'Passwords must match.']);
