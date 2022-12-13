@@ -16,9 +16,10 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('title', 50);
-            $table->foreign('user_id')->constrained('users');
+            // $table->integer('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->boolean('public')->default(true);
-            $table->string('path');
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }
