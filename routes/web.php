@@ -7,13 +7,13 @@ use App\Http\Controllers\Signin\SigninController;
 use App\Http\Controllers\Login\LoginController;
 use App\Http\Controllers\Devinfo\DevinfoController;
 use App\Http\Controllers\Upload\UploadController;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\UserConfig\UserConfigController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Search\SearchController;
 use App\Http\Controllers\ImageStorage\ImageStorageController;
 use App\Http\Controllers\Image\ImageController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Comment\CommentController;
+use App\Http\Controllers\User\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
