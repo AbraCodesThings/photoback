@@ -23,8 +23,13 @@
         </div>
         <div class="d-flex flex-column align-content-center justify-content-center mx-auto">
             {{-- Caja de texto con la URL para embeber la imagen en otro sitio --}}
-            <span>
+            {{-- <span>
                 <a href="{{Storage::url('public/images/' . $user->name . '/' . $image->path)}}">Link to the file</a>
+            </span> --}}
+            <span>
+                {{\QrCode::size(300)->generate(
+                  env('APP_URL') . Storage::url('public/images/' . $user->name . '/' . $image->path)
+                )}}
             </span>
         </div>
     </div>

@@ -179,6 +179,7 @@ return [
          *  Other cool service providers~ 
          */ 
         Jenssegers\Agent\AgentServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
     ],
 
     /*
@@ -234,6 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
 
     ],
 
