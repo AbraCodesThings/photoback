@@ -7,7 +7,7 @@
                 <div class="card m-3 mx-auto p-2 d-flex flex-column align-content-center">
                     <form class="d-flex justify-content-center form-group flex-column mx-auto p-2" enctype="multipart/form-data" action="{{route('upload')}}" method="POST">
                         @csrf
-                        <input class="form-control mb-2" type="file" accept="image/*" name="image" required>
+                        <input class="form-control mb-2" type="file" accept="image/jpg, image/jpeg, image/png, image/gif" name="image" required>
                         <label class="mb-2">Title: </label> <input class="form-control mb-2" type="text" name="title" placeholder="Title">
                         <label class="mb-2">Tags (separated by spaces): </label> <input class=" form-control mb-2" type="text" name="tags" placeholder="Tags">
                         <input class="form-control mb-2" type="submit" value="Upload">

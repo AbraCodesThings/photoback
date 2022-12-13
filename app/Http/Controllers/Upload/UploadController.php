@@ -26,9 +26,9 @@ class UploadController extends Controller {
     public function uploadImage(Request $request){
         /* Validación, TODO */
         $validated = $request->validate([
-          'image' => 'required',
-          'title' => 'required',
-          'tags' => 'required'
+          'image' => 'required | mimetypes:image/jpg,image/jpeg,image/gif,image/png,image/x-png | max:2048',
+          'title' => 'required | max:50',
+          'tags' => 'required | max:150'
         ]);
   
         if($validated){
