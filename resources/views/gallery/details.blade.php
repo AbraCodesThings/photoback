@@ -3,7 +3,9 @@
 @section('content')
     
     <div class="card card-body d-flex flex-row mx-4 mt-4">
+        
         <img class="img-fluid h-50 w-50" src="{{Storage::url('public/images/' . $user->name . '/' . $image->path)}}" alt="">
+
         <div class="mx-3 d-flex flex-column">
             <h1 class="text-marker">{{$image->title}}</h1>
             <span class="my-2">
@@ -14,11 +16,14 @@
             <div class="mt-auto">
                 <h4 class="text-marker">Tags</h4>
                 {{-- <span>{{Storage::url('public/images/' . $user->name . '/' . $image->path)}}</span> --}}
+                <div class="d-block">
                 @foreach($image->tags as $tag)
-                    <a href="{{route('search', ["search-options" => "tag", "search-params" => $tag->tagname])}}">
-                        <button class="btn btn-primary btn-round">{{$tag->tagname}}</button>
+                    <a class="mr-1" href="{{route('search', ["search-options" => "tag", "search-params" => $tag->tagname])}}">
+                        {{-- <button class="btn btn-primary btn-round">{{$tag->tagname}}</button> --}}
+                        #{{$tag->tagname}} 
                     </a>
                 @endforeach
+                </div>
             </div>
         </div>
         <div class="d-flex flex-column align-content-center justify-content-center mx-auto">
