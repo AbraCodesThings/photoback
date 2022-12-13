@@ -25,15 +25,7 @@ class ImageStorageController extends Controller {
             $success = $request->file('image')->store(Auth::user() . '/' . $filename); 
             return $success;
     }
-    public function get($username, $filename){
-        /* Check that the image is public, TODO */
 
-        return Storage::url($username . '/' . $filename);
-        // return asset('storage/' . $username . '/' . $filename);
-    }
-    public function getAll($username){
-        return Storage::getAll($username);
-    }
     public function deleteUserDirectory($user){
         try{
             $path = Storage::path('public/images/' . $user->name);
@@ -43,6 +35,7 @@ class ImageStorageController extends Controller {
             return false;
         }
     }
+    
     public function update($username, $filename){
         return Storage::update($username . '/' . $filename);
     }
