@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\User;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImageStorage\ImageStorageController;
 
 
 class ImageController extends Controller
@@ -18,19 +19,32 @@ class ImageController extends Controller
     }
 
     public function viewImage($username, $image_title, Request $request){
-      $user = User::where('name', $username)->get()->first();
-      $image = Image::where('user_id', $user->id)
-                ->where('title', $image_title)
-                ->get()->first();
-      $comments = $this->getComments($image);
-      // return dd($image);
-      return view("gallery.details")->with("image", $image)->with("user",$user)->with("comments",$comments);
+      try{
+        $user = User::where('name', $username)->get()->first();
+        $image = Image::where('user_id', $user->id)
+        ->where('title', $image_title)
+        ->get()->first();
+        $comments = $this->getComments($image);
+        // $comments = $image->comments();
+        return view("gallery.details")->with("image", $image)->with("user",$user)->with("comments",$comments);
+      } catch (Exception $e){
+        return redirect()->back()->withErrors('Backend error! Cannot show image.');
+      }
     }
 
-
-    // public function getImage($id){
-    //   return Image::where('id', $request['id'])->first();
-    // }
+    public function delete(Request $request){
+      $request->validate([
+        'image_id' => 'required'
+      ]);
+      try{
+        $image = Image::find($request['image_id']);
+        ImageStorageController::deleteImageFile($image->user, $image->path);
+        $image->delete();
+        return redirect('home')->withSuccess('Image deleted.');
+      } catch (Exception $e){
+        return redirect()->back()->withErrors('Backend error!. Image not deleted');
+      }
+    }
 
     public function getUserImages($user){
       /** Returns a collection of an user's images. */

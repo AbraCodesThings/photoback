@@ -11,7 +11,14 @@
             <span class="my-2">
                 - by <a href="{{route('search', ["search-options" => "uploader", "search-params" => $image->user->name])}}">{{$image->user->name}}</a>
             </span>
-            
+
+            @if($image->user == auth()->user())
+                <form action="{{route('delete-image')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="image_id" value="{{$image->id}}">
+                    <button class="btn btn-danger" type="submit">Delete this image</button>
+                </form>
+            @endif
             
             <div class="mt-auto">
                 <h4 class="text-marker">Tags</h4>

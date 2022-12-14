@@ -12,7 +12,7 @@ use App\Models\Image;
 class ApiController extends Controller
 {
     //API methods
-    public function getImageURL($username, $title){
+    public function getImage($username, $title){
         $user = User::where('name', $username)->get()->first();
         $image_filename = Image::where('user_id', $user->id)->where('title', $title)->get()->first()->path;
         $url = env('APP_URL') . Storage::url('public/images/' . $username . '/' . $image_filename);
@@ -29,6 +29,14 @@ class ApiController extends Controller
         return response()->json($results);
     }
 
+    public function uploadImage(){
+        //TODO
+    }
+
+    public function deleteImage(){
+        //TODO
+    }
+
     public function getToken(Request $request){
         $validated = $request->validate([
             'name' => 'required | email',
@@ -43,10 +51,13 @@ class ApiController extends Controller
             }
 
             if(!Hash::check($request['password'], $user->password)){
-                return response()->json(['error' => 'Incorrect password']);
+                return response()->json(['error' => 'Incorrect password'], 401);
             } else {
-
+                auth()->login($user);
+                $token = auth()->user()->createToken('frasesecreta451')->accessToken;
+                return response()->json(['token' => $token], 200);
             }
         }
+        return response()->json(['error' => 'Bad request'], 400);
     }
 }

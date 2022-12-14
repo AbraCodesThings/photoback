@@ -10,7 +10,7 @@
     <a href="{{route('gallery', ['user' => Auth::user()->name])}}" class="btn btn-primary mx-4 shadow">My gallery</a>
 
     @endif
-    <a href="{{route('devinfo')}}" class="btn btn-primary mx-4 shadow">Info for developers</a>
+    {{-- <a href="{{route('devinfo')}}" class="btn btn-primary mx-4 shadow">Info for developers</a> --}}
 </div>
 
 <style>

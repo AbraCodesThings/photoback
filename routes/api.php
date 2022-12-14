@@ -19,8 +19,11 @@ use App\Http\Controllers\Api\ApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/testeo/{username}/{title}', [ApiController::class, 'getImageURL']);
-Route::get('/testeo/{username}', [ApiController::class, 'getUserImages']);
+
+Route::get('/{username}/{title}', [ApiController::class, 'getImageURL']);
+Route::get('/{username}', [ApiController::class, 'getUserImages']);
+
+
 // Route::middleware('auth')->group(function () {
 //
 // });

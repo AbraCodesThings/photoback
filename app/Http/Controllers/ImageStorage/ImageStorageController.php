@@ -12,20 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 class ImageStorageController extends Controller {
-    public function upload(Request $request){
-        /* 
-            Upload function.
-
-            This function should assign an unique name to the file in the filesystem
-            and return whether it is successful or not.
-        */
-            
-            // $filename = $request->file('image')->getClientOriginalName();
-            $filename = 'test';
-            $success = $request->file('image')->store(Auth::user() . '/' . $filename); 
-            return $success;
-    }
-
+   
     public function deleteUserDirectory($user){
         try{
             $path = Storage::path('public/images/' . $user->name);
@@ -35,7 +22,17 @@ class ImageStorageController extends Controller {
             return false;
         }
     }
-    
+
+    public function deleteImageFile($user, $filename){
+        try{
+            $path = Storage::path('public/images/' . $user->name . '/' .$filename);
+            File::delete($path);
+            return true;
+        } catch(Exception $e){
+            return false;
+        }
+    }
+
     public function update($username, $filename){
         return Storage::update($username . '/' . $filename);
     }
