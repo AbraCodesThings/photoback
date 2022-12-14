@@ -4,7 +4,7 @@
   @include('headers')
 
   <body>
-    @include('testing.photo_header')
+    @include('photo_header')
     
     @include('buttons')
     @include('searchbox')

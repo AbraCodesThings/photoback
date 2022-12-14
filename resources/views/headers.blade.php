@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Photoback documentation</title>
+  <title>Photoback - An image hosting application</title>
 
   <link href="{{ URL::asset('css/app.css'); }}" rel="stylesheet" />
   <link href="{{ URL::asset('css/backgrounds.css')}}" rel="stylesheet" />
