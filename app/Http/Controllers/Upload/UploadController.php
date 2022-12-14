@@ -53,7 +53,7 @@ class UploadController extends Controller {
         return redirect()->back()->withErrors("Something went wrong! Contact the administrator.");
       }
 
-    private function handleTags($tags, $image){
+    public function handleTags($tags, $image){
         //TODO
         $tags = explode(' ', $tags);
         $tags_ids = collect([]);

@@ -20,8 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/{username}/{title}', [ApiController::class, 'getImageURL']);
+Route::get('/{username}/{title}', [ApiController::class, 'getImage']);
 Route::get('/{username}', [ApiController::class, 'getUserImages']);
+Route::post('/get-token', [ApiController::class, 'getToken']);
+Route::post('/login', [ApiController::class, 'loginAPI']);
+Route::middleware('auth:sanctum')->post('/upload', [ApiController::class, 'uploadImage']);
+Route::middleware('auth:sanctum')->post('/logout', [ApiController::class, 'logoutAPI']);
+Route::middleware('auth:sanctum')->post('/delete', [ApiController::class, 'deleteImage']);
 
 
 // Route::middleware('auth')->group(function () {
