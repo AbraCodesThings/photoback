@@ -19,14 +19,42 @@
                     <span class="text-marker">Username</span>
                     <input class="mb-3 form-control" type="text" name="name" placeholder="Cool username">
                     <span class="text-marker">Password</span>
+                    <small><a href="#passwordResetModal" data-toggle="modal" data-target="#passwordResetModal">Forgot your password?</a></small>
                     <input class="form-control" type="password" name="password">
                     <div id="login-buttons" class="d-flex justify-content-between mt-3 px-4">
                         <a class="btn btn-primary" href="{{route('signin')}}">Create Account</a>
                         <input class="btn btn-primary" type="submit" value="Login">
                     </div>
-                </form> 
+                </form>
+                
             </div>
         </div>
+
+        {{-- Modal --}}
+
+        <div class="modal fade" id="passwordResetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-marker" id="exampleModalLabel">Reset password</h5>
+                  
+                </div>
+                <div class="modal-body">
+                  <span>Please enter your email to reset your password.</span>
+                  <form action="{{route('password-reset')}}" method="POST">
+                    @csrf
+                    <input type="email" class="form-control my-2" name="email" id="">
+                    <div class="d-flex mt-1">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary mx-2">Send mail</button>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 @endsection

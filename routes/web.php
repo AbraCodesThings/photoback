@@ -14,6 +14,8 @@ use App\Http\Controllers\ImageStorage\ImageStorageController;
 use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\PasswordReset\PasswordResetController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +58,7 @@ Route::get('/gallery/{user}', [GalleryController::class, 'userGalleryIndex'])->m
 Route::get('/gallery/{username}/{image_title}', [ImageController::class, 'viewImage'])->name('image-details');
 Route::post('/gallery/{username}/{image_title}/post', [CommentController::class, 'create'])->middleware('auth')->name('create-comment');
 Route::post('/delete-image', [ImageController::class, 'delete'])->middleware('auth')->name('delete-image');
+
+// Reset password
+
+Route::post('/reset-password', [PasswordResetController::class, 'passwordReset'])->name('password-reset');

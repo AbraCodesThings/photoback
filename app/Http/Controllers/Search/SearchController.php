@@ -42,12 +42,12 @@ class SearchController extends Controller
     }
 
     private function searchByUploaderName(Request $request){
-        $images = User::where("name", $request["search-params"])->get()->first()->images;
+        $images = User::where("name", "like", '%' . $request["search-params"] . '%')->get()->first()->images;
         return $images; 
     }
 
     private function searchByImageTitle(Request $request){
-        $images = Image::where("title", $request["search-params"])->get();
+        $images = Image::where("title", "like", '%' . $request["search-params"] . '%')->get();
         return $images;
     }
 }
